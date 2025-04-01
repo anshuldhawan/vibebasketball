@@ -266,10 +266,10 @@ function updateScorecard(message = "") {
                           scorecardCanvas.width/2, 
                           scorecardCanvas.height/2);
     
-    // Draw level only (removed total)
+    // Draw level and total score
     scorecardCtx.fillStyle = '#aaffaa';
     scorecardCtx.font = 'bold 22px Arial';
-    scorecardCtx.fillText(`LEVEL ${levelCounter}`, scorecardCanvas.width/2, 40);
+    scorecardCtx.fillText(`LEVEL ${levelCounter} - TOTAL: ${totalScore}`, scorecardCanvas.width/2, 40);
     
     // Draw timer
     const minutes = Math.floor(gameTime / 60);
@@ -688,8 +688,8 @@ function animate() {
             score++;
             totalScore++; // Increment total score too
             
-            // Only highlight the frame, don't show "BASKET!" message
-            updateScorecard(); // Just update with the new score
+            // Update scorecard with "BASKET!" message and highlight frame
+            updateScorecard("BASKET!");
             highlightFrame();
             
             // Check if reached score threshold
